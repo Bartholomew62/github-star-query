@@ -7,4 +7,7 @@
 - Use GitHub API to fetch data, you can input your own token in the input box to increase the rate limit.
 - No server-side code, all data processing is done on the client-side.
 
+![screenshot](mock.png)
+(The screenshot is a mockup of the API response.)  
+
 ### You can try it yourself [Here](https://bartholomew62.github.io/github-star-query/).
