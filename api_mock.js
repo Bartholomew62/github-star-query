@@ -5,7 +5,7 @@ window.apiMediator = {
             "user1": [
                 {
                     login: "user1",
-                    avatar_url: "https://example.com/avatar1.png",
+                    avatar_url: "https://avatars.githubusercontent.com/u/445767?v=4",
                     user_url: "https://github.com/user1",
                     repo: "user1/repo1",
                     url: "https://github.com/user1/repo1"
@@ -18,14 +18,14 @@ window.apiMediator = {
             "user2": [
                 {
                     login: "user2",
-                    avatar_url: "https://example.com/avatar2.png",
+                    avatar_url: "https://avatars.githubusercontent.com/u/4964569?v=4",
                     user_url: "https://github.com/user2",
                     repo: "user1/repo1",
                     url: "https://github.com/user1/repo1"
                 },
                 {
                     login: "user2",
-                    avatar_url: "https://example.com/avatar2.png",
+                    avatar_url: "https://avatars.githubusercontent.com/u/4964569?v=4",
                     user_url: "https://github.com/user2",
                     repo: "user1/repo2",
                     url: "https://github.com/user1/repo1"
