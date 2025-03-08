@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>github-star-query</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="api.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container" id="app">
+        <h1>github-star-query</h1>
+        <div class="input-group">
+            <div class="input-group-row">
+                <div style="flex: 3">
+                    <input type="text" v-model="query" placeholder="user">
+                </div>
+                <div style="flex: 6">
+                    <input type="text" v-model="token" placeholder="token">
+                    <p>(Not necessary, while authenticated requests get a higher rate limit.)</p>
+                </div>
+                <div style="flex: 1">
+                    <button @click="filterData">Query</button>
+                </div>
+            </div>
+        </div>
+        <div v-if="error" class="error">{{ error }}</div>
+        <div v-if="loading" class="loading">Loading...</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 26%">Login</th>
+                    <th style="width: 37%">Received</th>
+                    <th style="width: 37%">Given</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(user, login) in filteredData" :key="login">
+                    <td>
+                        <a :href="user.user_url" target="_blank">
+                            <img :src="user.avatar_url" alt="avatar" width="30" height="30">
+                            {{ login }}
+                        </a>
+                    </td>
+                    <td>
+                        <details v-if="user.receivedStars.length > 0">
+                            <summary>
+                                {{ user.receivedStars.length }}
+                                <svg height="16" viewBox="0 0 16 16" version="1.1" width="16" style="fill: #eac54f;">
+                                    <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path>
+                                </svg>
+                            </summary>
+                            <ul>
+                                <li v-for="repo in user.receivedStars" :key="repo.repo">
+                                    <a :href="repo.url" target="_blank">{{ repo.repo }}</a>
+                                </li>
+                            </ul>
+                        </details>
+                    </td>
+                    <td>
+                        <details v-if="user.givenStars.length > 0">
+                            <summary>
+                                {{ user.givenStars.length }}
+                                <svg height="16" viewBox="0 0 16 16" version="1.1" width="16" style="fill: #eac54f;">
+                                    <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path>
+                                </svg>
+                            </summary>
+                            <ul>
+                                <li v-for="repo in user.givenStars" :key="repo.repo">
+                                    <a :href="repo.url" target="_blank">{{ repo.repo }}</a>
+                                </li>
+                            </ul>
+                        </details>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

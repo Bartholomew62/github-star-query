@@ -1,0 +1,128 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f9;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-direction: column;
+}
+
+    .input-group input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-right: 10px;
+        flex: 1;
+        padding: 15px;
+        font-size: 16px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .input-group button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #3498db;
+        color: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+        padding: 15px 30px;
+        font-size: 16px;
+    }
+
+        .input-group button:hover {
+            background-color: #2980b9;
+        }
+
+.input-group-row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #3498db;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+img {
+    border-radius: 50%;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+.error {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+.loading {  
+   font-size: 1.5em;  
+   color: #333;  
+   text-align: center;  
+   margin-top: 20px;  
+}
+
+summary {
+    cursor: pointer;
+}
+
+/* 基本樣式修改 */
+summary {
+    font-weight: bold;
+    color: #3366cc;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+    summary:hover {
+        background-color: #e0e0e0;
+    }
+
+    summary:focus {
+        outline: 2px solid #6699ff;
+    }
