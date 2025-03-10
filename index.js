@@ -35,14 +35,13 @@
             },
 
             mergeGivenStars(givenStars) {
-                let finalResult = Object.assign({}, this.filteredData);
                 for (let [login, s] of Object.entries(givenStars)) {
-                    finalResult[login] ??= { login: login, givenStars: [], receivedStars: [] };
-                    finalResult[login].givenStars.push(...s);
-                    finalResult[login].avatar_url ??= s[0]?.avatar_url;
-                    finalResult[login].user_url ??= s[0]?.user_url;
+                    if (!this.filteredData[login])
+                        this.$set(this.filteredData, login, { login: login, givenStars: [], receivedStars: [] });
+                    this.filteredData[login].givenStars.push(...s);
+                    this.filteredData[login].avatar_url ??= s[0]?.avatar_url;
+                    this.filteredData[login].user_url ??= s[0]?.user_url;
                 }
-                this.filteredData = finalResult;
             },
 
             async fetchReceivedStars() {
@@ -53,14 +52,13 @@
             },
 
             mergeReceivedStars(receivedStars) {
-                let finalResult = Object.assign({}, this.filteredData);
                 for (let [login, s] of Object.entries(receivedStars)) {
-                    finalResult[login] ??= { login: login, givenStars:[], receivedStars: [] };
-                    finalResult[login].receivedStars.push(...s);
-                    finalResult[login].avatar_url ??= s[0]?.avatar_url;
-                    finalResult[login].user_url ??= s[0]?.user_url;
+                    if (!this.filteredData[login])
+                        this.$set(this.filteredData, login, { login: login, givenStars: [], receivedStars: [] });
+                    this.filteredData[login].receivedStars.push(...s);
+                    this.filteredData[login].avatar_url ??= s[0]?.avatar_url;
+                    this.filteredData[login].user_url ??= s[0]?.user_url;
                 }
-                this.filteredData = finalResult;
             }
         }
     });
