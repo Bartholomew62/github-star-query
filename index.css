@@ -109,7 +109,6 @@ summary {
     cursor: pointer;
 }
 
-/* 基本樣式修改 */
 summary {
     font-weight: bold;
     color: #3366cc;
@@ -126,3 +125,8 @@ summary {
     summary:focus {
         outline: 2px solid #6699ff;
     }
+
+.sumary-row {
+    font-weight: bold;
+    color: #3366cc;
+}

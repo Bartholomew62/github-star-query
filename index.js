@@ -6,12 +6,16 @@
             token: '',
             error: '',
             loading: false,
-            filteredData: {}
+            filteredData: { },
+            totalGivenStars: 0,
+            totalReceivedStars: 0
         },
         methods: {
             async filterData() {
                 this.error = '';
                 this.filteredData = {};
+                this.totalGivenStars = 0;
+                this.totalReceivedStars = 0;
                 if (!this.query)
                     return;
                 this.loading = true;
@@ -41,6 +45,7 @@
                     this.filteredData[login].givenStars.push(...s);
                     this.filteredData[login].avatar_url ??= s[0]?.avatar_url;
                     this.filteredData[login].user_url ??= s[0]?.user_url;
+                    this.totalGivenStars += s.length;
                 }
             },
 
@@ -58,6 +63,7 @@
                     this.filteredData[login].receivedStars.push(...s);
                     this.filteredData[login].avatar_url ??= s[0]?.avatar_url;
                     this.filteredData[login].user_url ??= s[0]?.user_url;
+                    this.totalReceivedStars += s.length;
                 }
             }
         }
