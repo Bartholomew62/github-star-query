@@ -129,4 +129,5 @@ summary {
 .sumary-row {
     font-weight: bold;
     color: #3366cc;
+    align-items: center;
 }

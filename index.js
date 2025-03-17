@@ -1,4 +1,18 @@
 ﻿document.addEventListener('DOMContentLoaded', () => {
+
+    function exportTxt(filename, csvContent) {
+        let bom = '\uFEFF';
+        let blob = new Blob([bom + csvContent], { type: 'text/csv;charset=utf-8;' });
+        let link = document.createElement('a');
+        let url = URL.createObjectURL(blob);
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+
     new Vue({
         el: '#app',
         data: {
@@ -65,6 +79,12 @@
                     this.filteredData[login].user_url ??= s[0]?.user_url;
                     this.totalReceivedStars += s.length;
                 }
+            },
+
+            exportDiff() {
+                let uns = Object.entries(this.filteredData).filter(d => !d[1].receivedStars.length).map(d => d[0]).sort();
+                let dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+                exportTxt(`${dateStr}_diff.txt`, uns.join('\n'));
             }
         }
     });
